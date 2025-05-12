@@ -1,0 +1,9 @@
+package com.lovecalculator.service;
+
+public class LCAppEmailServiceImpl implements LCAppEmailService {
+
+	public void sendEmail(String username, String result) {
+	
+	}
+
+}

@@ -1,0 +1,41 @@
+package com.Exception.Controller;
+
+import java.io.IOException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class FirstController {
+
+//	This Request Throwing the NullPointerException
+	@RequestMapping("/")
+	public String getHomepage() {
+		if (true) {
+			throw new NullPointerException();
+		}
+		return "Home-Page";
+	}
+
+//	This Request Throwing the IOException 
+	@RequestMapping("/home2")
+	public String getHomepage2() throws Exception {
+		if (true) {
+			throw new IOException();
+		}
+		return "Home-Page";
+	}
+
+//	@ExceptionHandler annotation in Spring Framework is used to handle specific exceptions and send custom responses to the client. 
+//	It's part of Spring MVC's exception handling mechanism and is typically used in controllers or controller advice classes.
+	@ExceptionHandler(value = NullPointerException.class)
+	public String NullPointerExceptionPage() {
+		return "NullPointerException";
+	}
+
+	@ExceptionHandler(value = Exception.class)
+	public String ExceptionPage() {
+		return "Exception";
+	}
+}

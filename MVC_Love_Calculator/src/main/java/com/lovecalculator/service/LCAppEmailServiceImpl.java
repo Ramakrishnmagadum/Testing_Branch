@@ -1,0 +1,22 @@
+package com.lovecalculator.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LCAppEmailServiceImpl implements LCAppEmailService {
+
+	@Autowired
+	private JavaMailSender mailsenderImpl;
+
+	public void sendEmail(String userName, String userEmail, String result) {
+		SimpleMailMessage newmail = new SimpleMailMessage();
+		newmail.setTo(userEmail);
+		newmail.setSubject("Love Calculator Application Result");
+		newmail.setText("Hi " + userName + " The result predicted by the LCApp us " + result);
+		mailsenderImpl.send(newmail);
+	}
+
+}

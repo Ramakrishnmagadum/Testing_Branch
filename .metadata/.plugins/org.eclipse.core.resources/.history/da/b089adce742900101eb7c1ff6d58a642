@@ -1,0 +1,11 @@
+package com.feedback.Entities;
+
+public class HomeBean {
+
+	String username;
+	String Email;
+	String Feedback;
+	
+	
+	
+}

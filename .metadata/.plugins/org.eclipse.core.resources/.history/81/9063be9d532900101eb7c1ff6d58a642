@@ -1,0 +1,13 @@
+package com.lovecalculator.service;
+
+public class LCAppCalculatorImpl implements LCAppCalculator{
+
+	public String lovecalculation(String username, String Crushname) {
+		int size=username.length()+Crushname.length();
+		
+//		FLAME   -->Friend , Love , Affection , Marrige ,Enemy
+		
+		return null;
+	}
+
+}

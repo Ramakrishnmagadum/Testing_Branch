@@ -1,0 +1,79 @@
+package com.practice.controller;
+
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.practice.Entities.BuildDTO;
+import com.practice.Entities.CreditCard;
+import com.practice.PropertEditor.CreditCardEditor;
+import com.practice.PropertEditor.NamedEditor;
+
+@Controller
+public class Homecontroller {
+
+	@RequestMapping("/")
+	public String gethomepage(@ModelAttribute("details") BuildDTO details) {
+		
+//		on LoadOn page adding the Values...
+		CreditCard card=new CreditCard();
+		card.setFirstfourdigit(1234);
+		card.setSecondfourdigit(2345);
+		card.setThirdfourdigit(3456);
+		card.setFourthfourdigit(4567);
+		details.setCreditcard(card);
+		return "Home-page";
+	}
+	
+	@RequestMapping("/resultpage")
+	public String getresultpage(@Valid @ModelAttribute("details")BuildDTO details , BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "Home-page";
+		}
+		return "resultpage";
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		
+		//Custom Date Editor --> here we will edit the Date Format BY inBuild Property Editor
+//		Example By default Formatter is "dd/mm/yyyy" if user is giving the other date format then itis not able to convert dat format so it will throw error
+//		to avoid this will to explicitly change the format
+		SimpleDateFormat dateformat=new SimpleDateFormat("dd-MM-yyyy");
+		CustomDateEditor dateEditor=new CustomDateEditor(dateformat, true);
+		binder.registerCustomEditor(Date.class, "date",dateEditor);
+		
+//		This is NumberFormat Editor....
+		NumberFormat numberformat=new DecimalFormat("##,###.##");
+		CustomNumberEditor numberEditor=new CustomNumberEditor(BigDecimal.class,numberformat ,true);
+		binder.registerCustomEditor(BigDecimal.class, "amount", numberEditor);
+		
+		
+//		Creating Our own PropertyEditor (Called NamedEditor) --> this will convert user entered values into UpperCase()
+		NamedEditor editor=new NamedEditor();
+		binder.registerCustomEditor(String.class, editor);
+		
+//		registering the Formatter Through Binder 
+//		same work will do the Editor Also ...
+//		binder.addCustomFormatter(new CreditCardformatter());
+		
+//		it Editor for CreditCard Bean --> it will load page as well as edit the property...
+		CreditCardEditor cardcredtoreditor=new CreditCardEditor();
+		binder.registerCustomEditor(CreditCard.class, cardcredtoreditor);
+		
+	}
+}

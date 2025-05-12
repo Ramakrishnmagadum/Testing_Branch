@@ -1,0 +1,22 @@
+package com.feedback.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.feedback.Entities.UserInfoBean;
+
+@Controller
+public class FirstController {
+	
+	@RequestMapping("/")
+	public String getHomepage(@ModelAttribute("userinfo") UserInfoBean user) {
+		return "Home-page";
+	}
+	
+	@RequestMapping("/sendEmail")
+	public String SendEmail(@ModelAttribute("userinfo") UserInfoBean user) {
+		return "Home-page";
+	}
+
+}

@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Result Page</title>
+</head>
+<body>
+
+<h1 align="center">Love Calculator</h1>
+<hr>
+<div align="center">
+<p>Your Result is displaying Below Please find it </p>
+<!-- this by @RequestParam  -->
+<%-- <p>${uname} and ${cname} you both are: </p> --%>
+
+<!--  passing StudentBean Object Ref -->
+<p>${student.username} and ${student.crushname} you both are: </p>
+</div>
+
+</body>
+</html>

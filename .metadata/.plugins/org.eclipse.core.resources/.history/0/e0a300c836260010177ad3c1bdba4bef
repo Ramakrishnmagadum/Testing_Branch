@@ -1,0 +1,23 @@
+package com.practice.Customvalidator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.practice.Entities.BuildDTO;
+
+//this will validate particuler Field ...
+public class UsernameValidator  implements Validator{
+
+//	It will check it is supports or not for Incoming Bean.......
+	public boolean supports(Class<?> clazz) {
+		
+		return BuildDTO.class.equals(clazz);
+	}
+
+	public void validate(Object target, Errors errors) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

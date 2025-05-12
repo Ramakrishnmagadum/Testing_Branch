@@ -1,0 +1,47 @@
+package com.ModelAttribute.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ModelAttribute.DTO.MYwebsiteIntoDTO;
+
+@Controller
+//this  annotation :-@ControllerAdvice applies to all controllers in your application.The @ModelAttribute-annotated method runs before every request handled by any controller.
+//The attributes added are available in every view rendered by the application.
+@ControllerAdvice
+public class MywebsiteController {
+
+//	when this annotation if we add above method  --> then It will execute Before the  Every @RequestiMapping Request.. 
+//	This method is executed before every @RequestMapping, @GetMapping, etc. method in the controller.
+//	its purpose is to add attributes in the model of particular Controller    --> 
+//	This is typically used for adding common data (like current user, navigation menus, settings) to the model.
+//	Example :--"/showCompanyinfo" if we fire this URL then for this RequesCycle Model --> This will add as attribute with Name "websiteinfo" and with this name we can fetch the details in view Page
+	@ModelAttribute("websiteinfo") 
+	public MYwebsiteIntoDTO getwebisteInfo() {
+		System.out.println(("@ModelAttribute :-> Inside getwebisteInfo Method "));
+		MYwebsiteIntoDTO dto = new MYwebsiteIntoDTO();
+		dto.setWebsiteName("SeleniumExpress");
+		dto.setWebsiteCategory("Education ");
+		return dto;
+	}
+
+	
+//	with Above Method -->@ModelAttribute("websiteinfo") it will create Model with name "websiteinfo" , and that Model it will be present in this RequestCycle
+//	@ModelAttribute("websiteinfo")   --> this will also create Model But with this name already Model is present So it will create new one it will use Existing --> if name is different then it will create New One..
+	@RequestMapping("/showinfo")
+	public String showWebsiteInfo(@ModelAttribute("websiteinfoo") MYwebsiteIntoDTO websiteinfo) {
+		System.out.println("Inside showWebsiteInfo Method");
+		System.out.println(websiteinfo.getWebsiteName());
+		System.out.println(websiteinfo.getWebsiteCategory());
+		return "Home-Page";
+	}
+
+	@RequestMapping("/showCompanyinfo")
+	public String showCompanyInfo() {
+		System.out.println("Inside showCompanyInfo Method");
+		return "Home-Page";
+	}
+
+}

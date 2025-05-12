@@ -1,0 +1,98 @@
+package com.lovecalculator_config;
+
+import java.util.Properties;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.lovecalculator.Formatter.PhoneFormatter;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = {"com.lovecalculator.Controller", "com.lovecalculator.service"})
+//WebMvcConfigurer --> this is inertface we can add many configuration with this .. currently we using this to register the Formatter....
+public class ControllerMapper implements WebMvcConfigurer {
+
+//	This is method used to Register the Formatter...
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addFormatter(new PhoneFormatter());
+		System.out.println("registering the formatter..");
+//		WebMvcConfigurer.super.addFormatters(registry);
+	}
+
+	@Bean
+	public InternalResourceViewResolver getviewresolver() {
+		InternalResourceViewResolver viewresolver = new InternalResourceViewResolver();
+		viewresolver.setPrefix("/WEB-INF/view/");
+		viewresolver.setSuffix(".jsp");
+		return viewresolver;
+	}
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------
+//	---------------  This Code For getiing Dynamic Message from .properties File  ---------------
+
+//	1st Step :- provide the filename to ResourceBundleMessageSource object
+	@Bean
+	public ResourceBundleMessageSource messageresource() {
+		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+//		this is filename will config ---> no need to mention the package name bcz --> by default it should be present inside java/main/resources  
+		source.setBasename("MessageResources");
+		return source;
+	}
+
+//	 2nd Step :- 
+	@Bean
+	public LocalValidatorFactoryBean validator() {
+		LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+//		 above omethod will pass here 
+		bean.setValidationMessageSource(messageresource());
+		return bean;
+	}
+
+//	 3rd Step:- this is link/call while starting the server and register the .properties related configuration 
+//	 This will register ...
+	public Validator getValidator() {
+		System.out.println("loading the validator message Resource Bundle");
+		return validator();
+	}
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------
+	@Bean
+	public JavaMailSender getjavamailsender() {
+
+		JavaMailSenderImpl mailsender = new JavaMailSenderImpl();
+		mailsender.setHost("smtp.gmail.com");
+		mailsender.setUsername("ramakrishnmagadum@gmail.com");
+		// fbul rrmy vdnp qdtw  --this is only generated password..
+		mailsender.setPassword("fbul rrmy vdnp qdtw");
+		mailsender.setPort(587);
+		
+//		 facing the issue with javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted exception . Below is the solution
+//		 Google stopped supporting "Less Secure Apps" now
+//
+//		 One of the alternatives to solve this problem is to use 2-Step Verification and generate app password:
+//		     Google Account -> Security -> 2-Step Verification -> Input password as asked -> Turn ON (you could use SMS to get Gmail code to activate 2-Step Verification)
+//		     Google Account -> Security -> App password -> Input password as asked -> Select the app and device... -> e.g. Other(Custom name) -> Input app name e.g. MyApp -> Generate
+//		     Copy a 16-character password
+//		     Use a 16-character password with Gmail username in your application
+
+		Properties emailproperties = new Properties();
+		emailproperties.put("mail.smtp.starttls.enable", true);
+		emailproperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+		mailsender.setJavaMailProperties(emailproperties);
+		return mailsender;
+
+	}
+
+}

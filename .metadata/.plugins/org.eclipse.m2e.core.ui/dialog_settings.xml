@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="D:\Workspace\MVC\Model-Attribute-Method-Level"/>
+			<item value="D:\Workspace\MVC\Love-calculator-SessionAttributes"/>
+			<item value="D:\Workspace\MVC\Formatter_practice_project\src\main\java\com\practice\Entities\Card_details.java"/>
+			<item value="D:\Workspace\MVC\MVC_ViewResolver_and_Model"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.practiceproject.Exeception_Examples"/>
+			<item value="com.practiceproject.Model_Attribute_Method_Level"/>
+			<item value="com.practiceproject.FeedbackProject"/>
+			<item value="com.practiceproject.Love_calculator_SessionAttributes"/>
+			<item value="com.practiceproject.Love_calclutor_SessionAttributes"/>
+			<item value="com.practiceproject.SesssionManagement"/>
+			<item value="com.practiceproject.InitBinderProject"/>
+			<item value="com.practiceproject.IninBinderProject"/>
+			<item value="com.practiceproject.Formatter_Project"/>
+			<item value="com.practiceproject.Formatter_project"/>
+			<item value="com.practiceproject.Formatter_practice_project"/>
+			<item value="com.third.MVC_Love_Calculator"/>
+			<item value="com.Second.MVC_ViewResolver_and_Model"/>
+			<item value="com.first.Spring_MCV_First"/>
+			<item value="com.first.Spring_MVC_First"/>
+		</list>
+		<list key="groupId">
+			<item value="com.practiceproject"/>
+			<item value="com.third"/>
+			<item value="com.Second"/>
+			<item value="com.first"/>
+			<item value="Sample"/>
+		</list>
+		<list key="artifactId">
+			<item value="Exeception_Examples"/>
+			<item value="Model-Attribute-Method-Level"/>
+			<item value="FeedbackProject"/>
+			<item value="Love-calculator-SessionAttributes"/>
+			<item value="Love-calclutor-SessionAttributes"/>
+			<item value="SesssionManagement"/>
+			<item value="InitBinderProject"/>
+			<item value="IninBinderProject"/>
+			<item value="Formatter_Project"/>
+			<item value="Formatter_project"/>
+			<item value="Formatter_practice_project"/>
+			<item value="MVC_Love_Calculator"/>
+			<item value="MVC_ViewResolver_and_Model"/>
+			<item value="Spring_MCV_First"/>
+			<item value="Spring_MVC_First"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

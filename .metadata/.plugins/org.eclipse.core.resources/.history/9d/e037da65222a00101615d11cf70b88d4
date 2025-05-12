@@ -1,0 +1,5 @@
+package com.ModelAttribute.Config;
+
+public class WebXmlInitailizer {
+
+}

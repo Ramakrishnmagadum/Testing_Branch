@@ -1,0 +1,6 @@
+InvalidAge = Age should be between  {lower} - {higger}
+#invalidcountry= Country name should be start with Letter  {startwith}
+
+#Here 0 is Varible name and 1 and 2 are parameters are passing to that Variable or Annotation..
+#InvalidAge = {0} should be between  {1} - {2}
+invalidcountry= Country name should be start with Letter  {startwith}

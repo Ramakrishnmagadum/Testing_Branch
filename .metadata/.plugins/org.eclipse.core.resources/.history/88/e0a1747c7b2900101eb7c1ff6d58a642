@@ -1,0 +1,10 @@
+package com.feedback.Service;
+
+public class FeedbackEmailSenderImpl  implements FeedbackEmailSender{
+
+	public void sendEmail(String Username, String Email, String Feedback) {
+		
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.ModelAttribute.Controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MywebsiteController {
+	
+	public String showWebsiteInfo() {
+		return "Home-Page";
+	}
+
+}

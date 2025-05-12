@@ -1,0 +1,21 @@
+package com.ModelAttribute.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ModelAttribute.DTO.MYwebsiteIntoDTO;
+
+@Controller
+public class SecondController {
+
+	
+	@RequestMapping("/second")
+	public String showWebsiteInfo(@ModelAttribute("websiteinfoo") MYwebsiteIntoDTO websiteinfo) {
+		System.out.println("Inside showWebsiteInfo Method");
+		System.out.println(websiteinfo.getWebsiteName());
+		System.out.println(websiteinfo.getWebsiteCategory());
+		return "Home-Page";
+	}
+	
+}

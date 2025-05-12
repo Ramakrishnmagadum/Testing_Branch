@@ -1,0 +1,16 @@
+package com.feedback.Service;
+
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FeedbackEmailSenderImpl  implements FeedbackEmailSender{
+
+	@Autow
+	public void sendEmail(String Username, String Email, String Feedback) {
+		SimpleMailMessage message=new SimpleMailMessage();
+		
+		
+	}
+
+}

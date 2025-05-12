@@ -1,0 +1,19 @@
+package com.lovecalculator.service;
+
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Service;
+
+@Service
+public class LCAppEmailServiceImpl implements LCAppEmailService {
+
+	public void sendEmail(String userName, String userEmail, String result) {
+		SimpleMailMessage newmail=new SimpleMailMessage();
+		newmail.setTo(userEmail);
+		newmail.setSubject("Love Calculator Application Result");
+		newmail.setText("Hi "+userName +" The result predicted by the LCApp us "+ result );
+		
+	}
+
+	
+
+}

@@ -1,0 +1,51 @@
+package HttpSession;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class Homecontroller {
+
+	@RequestMapping("/")
+	public String gethomepage(@ModelAttribute("student") StudentBean student) {
+		return "Home-page";
+	}
+
+	@RequestMapping("/resultpage")
+	public String getresultPage(@ModelAttribute("student") StudentBean student ,HttpServletRequest request) {
+		
+//		creating session  and this will be avaliable in all the jsp pages and java pagaes thought this session ..
+		HttpSession session =request.getSession();  //this object will return the session --> if session presrent then it will return existing else it will create new session..
+//		adding values to session....
+		session.setAttribute("username", student.getUsername());
+//		this to expiry the Session after this much of Time...
+//		session.setMaxInactiveInterval(120);
+		
+		
+		return "resultpage";
+	}
+
+	
+	@RequestMapping("/ShowSession")
+	public String showcookiePage(Model model, HttpServletRequest request) {
+		
+		return "ShowSession";
+	}
+
+	@RequestMapping("/HttpSessionAnnotation")
+	public String ShowcookieAnnotation( Model model) {
+		return "HttpSessionAnnotation";
+	}
+
+}

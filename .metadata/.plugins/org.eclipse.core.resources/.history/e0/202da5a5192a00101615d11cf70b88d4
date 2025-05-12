@@ -1,0 +1,26 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%><!-- This is Form Tag Lib  -->
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Email Page</title>
+</head>
+<body>
+
+<h1>Hi ${controllerusername}</h1>
+<h2>Send result to your Email</h2>
+
+<!-- This line wrote for Dynamic Url Passing ..Here Using @PathVarible Concept -->
+<%-- <form:form action="/MVC_Love_Calculator/process-email/${username}" modelAttribute="Email"> --%>
+
+
+<form:form action="/MVC_Love_Calculator/process-email" modelAttribute="Email">
+<label>Enter Your Email</label>
+<form:input path="useremail"/>
+<input type="submit" value="Submit">
+</form:form>
+
+</body>
+</html>

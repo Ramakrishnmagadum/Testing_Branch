@@ -1,0 +1,20 @@
+package com.practice.Customvalidator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import com.practice.Entities.BuildDTO;
+
+public class EmailValidator implements Validator{
+
+	public boolean supports(Class<?> clazz) {
+		// TODO Auto-generated method stub
+		return BuildDTO.class.equals(clazz);
+	}
+
+	public void validate(Object target, Errors errors) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

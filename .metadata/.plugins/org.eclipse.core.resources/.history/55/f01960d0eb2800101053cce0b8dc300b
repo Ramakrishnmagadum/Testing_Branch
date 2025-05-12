@@ -1,0 +1,5 @@
+package com.lovecalculator.service;
+
+public class LCAppEmailServiceImpl {
+
+}

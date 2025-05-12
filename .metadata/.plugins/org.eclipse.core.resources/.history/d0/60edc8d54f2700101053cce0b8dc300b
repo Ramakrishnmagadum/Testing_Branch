@@ -1,0 +1,8 @@
+<html>
+<body>
+<h2 align="center" >Session attributes Examples</h2>
+First Name :${firstname}
+Second Name : ${secondname}
+<hr><br>
+</body>
+</html>

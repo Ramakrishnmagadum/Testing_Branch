@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 align="center" >Session attributes Examples</h2>
+<hr><br>
+First Name : ${firstname} <br>
+Second Name : ${secondname}<br>
+
+Fetching Firstname from  requestScope : ${requestScope.firstname}<br>
+Fetching Firstname from  Session Scope : ${sessionScope.firstname}
+<br>
+<a href="Love-calculator-SessionAttributes/${next}"> next${next}</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+package com.practice.Customvalidator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import com.practice.Entities.BuildDTO;
+
+public class EmailValidator implements Validator{
+
+	public boolean supports(Class<?> clazz) {
+		return BuildDTO.class.equals(clazz);
+	}
+
+	public void validate(Object target, Errors errors) {
+		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Email.Empty", "Email should not be Null");
+		
+		BuildDTO bean=(BuildDTO)target);
+		   if(!bean.getEmail().endsWith("@Ego.com")) {
+			   errors.rejectValue("email", "Email.invalide", "Email must end with @Ego.com");
+		   }
+	}
+
+}

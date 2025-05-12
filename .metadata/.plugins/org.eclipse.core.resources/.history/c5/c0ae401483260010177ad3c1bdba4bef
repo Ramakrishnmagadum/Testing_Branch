@@ -1,0 +1,30 @@
+package com.lovecalculator.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.lovecalculator.Entities.EmailDTO;
+import com.lovecalculator.Entities.UserInfoBean;
+
+@Controller
+public class EmailController {
+
+//	this url is dynamic --> And Dynamic url handled by the @pathvarible
+	@RequestMapping("/sendemail/{username}")
+	public String getEmailPage(@PathVariable("username") String username, Model model) {
+
+		model.addAttribute("username", username.toUpperCase());
+		model.addAttribute("Email", new EmailDTO());
+		return "email-page";
+
+	}
+
+	@RequestMapping("/process-email")
+	public String processEmail(@ModelAttribute("email") EmailDTO emailDTO) {
+		return "process-email-page";
+
+	}
+}

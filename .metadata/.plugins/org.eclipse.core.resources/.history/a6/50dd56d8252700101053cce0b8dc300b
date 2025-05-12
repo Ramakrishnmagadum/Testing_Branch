@@ -1,0 +1,77 @@
+package com.lovecalculator.Controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.lovecalculator.Entities.UserInfoBean;
+
+@Controller
+public class LCcontroller {
+	
+//	@RequestMapping("/")
+//	public String getHomePage() {	
+//		return "home-page";
+//	}
+//	----------  to set default values to home page ------------
+//	@RequestMapping("/")
+//	public String getHomePage(Model model) {
+//		//whenever the object will get create then it will having copy of the non-static varibles in heap memory
+//		StudentBean bean=new StudentBean();
+//		model.addAttribute("student", bean);
+//		return "home-page";
+//	}
+//	----------  to set default values to home page By Using @ModelAttribute Annotation ------------
+	@RequestMapping("/")
+	//this will bind the incoming Http request to the Bean or Model Object ....it will reduce the Lot of Code...
+	public String getHomePage(@ModelAttribute("student") UserInfoBean std) {
+		return "home-page";
+	}
+	
+	
+	
+	
+	
+	@RequestMapping("/process-page")
+	//The @RequestParam annotation in Spring is used to extract query parameters, form data, or parameters from a URL in a Spring MVC controller method
+	//@RequestParam("username") ==here username should be inputname in jsp file
+	//@RequestParam(defaultValue = "1")  --we can set default also here 
+//	@RequestParam(required = false) -- we can make it as optional also
+//	public String getData(@RequestParam("username") String uname , @RequestParam("crushname") String cname, Model model ) {
+//		System.out.println("name is "+uname +" crush name is "+cname);
+//		model.addAttribute("uname", uname);
+//		model.addAttribute("cname", cname);
+//		return "process-page";
+//	}
+	//----------------Other Method to avoid the @requestParam Multiple Times----------------
+	//StudentBean Object will get create and by setters it will set the data if .jsp form inout-name and Bean Varible name same 
+	//it will avoid the extra code ...
+//	public String getData(StudentBean student , Model model) {
+//	
+//		model.addAttribute("studentinfo", student);
+//		return "process-page";
+//	}
+	
+	//---------------------Using @ModelAttribute Annotation
+	public String getData(@Valid @ModelAttribute("student")UserInfoBean student , BindingResult result ,HttpServletRequest request) {
+		if(result.hasErrors()) {
+			return "home-page";
+		}
+		
+//		creating session 
+		HttpSession session =request.getSession();  //this object will return the session --> if session presrent then it will return existing else it will create new session..
+//		adding values to session....
+		session.setAttribute("username", student.getUsername());
+		
+		return "process-page";
+	}
+	
+
+}

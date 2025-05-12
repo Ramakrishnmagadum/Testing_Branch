@@ -1,0 +1,55 @@
+package com.lovecalculator.Controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.lovecalculator.Entities.EmailDTO;
+
+@Controller
+public class EmailController {
+
+//	----------------------------------------------------- BY @PathVarible --------------------------------------------------------------------
+//	 ----  By @PathVarible --> its difficult to deal with multiple pages Bcz ..for mutliple times same code need to write ,so   to avoid this we follow the Session managament-----
+//	this url is dynamic --> And Dynamic url handled by the @pathvarible
+
+//	we can pass multiple varibles also....in dynamic path like this -->@PathVariable("username") String username, @PathVariable("crushname") String crushname
+
+//	@RequestMapping("/sendemail/{username}")
+//	public String getEmailPage(@PathVariable("username") String name ,  @ModelAttribute("Email") EmailDTO emailDTO , Model model) {
+//		model.addAttribute("username", name.toUpperCase());
+//		
+////		this for handling multiple Dynamic URL 
+////		@PathVariable Map<String , String> path
+////		model.addAttribute("username", path.get("username").toUpperCase());
+////		model.addAttribute("crushname", path.get("crushname").toUpperCase());	
+//		return "email-page";
+//	}
+
+//	@RequestMapping("/process-email/{username}")
+//	public String processEmail(@PathVariable("username") String username, @ModelAttribute("email") EmailDTO emailDTO ,Model model) {
+//		model.addAttribute("username", username);
+//		return "process-email-page";
+//	}
+
+//	----------------------------------------------------- BY Session Management By HttpSession --------------------------------------------------------------------
+	@RequestMapping("/sendemail")
+	public String getEmailPage(@ModelAttribute("Email") EmailDTO emailDTO, Model model, HttpSession session) {
+
+		String username = session.getAttribute("username").toString();
+		model.addAttribute("controllerusername", username);
+		return "email-page";
+	}
+
+	@RequestMapping("/process-email")
+	public String processEmail(@ModelAttribute("email") EmailDTO emailDTO, Model model) {
+		return "process-email-page";
+	}
+//	------------------------------------------------------------------------------------------------------------------------------------------
+}

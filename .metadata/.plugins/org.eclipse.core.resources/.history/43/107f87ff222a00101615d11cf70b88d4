@@ -1,0 +1,8 @@
+package com.ModelAttribute.DTO;
+
+public class MYwebsiteIntoDTO {
+
+	private String websiteName;
+	private String websiteCategory;
+	
+}

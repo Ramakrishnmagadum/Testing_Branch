@@ -1,0 +1,37 @@
+package com.practice.Customvalidator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import com.practice.Entities.BuildDTO;
+
+//BY This Class we validate i. Username should be Null ii. username should contians "_"
+//this will validate particuler Field ...
+public class UsernameValidator  implements Validator{
+
+//	It will check it is supports or not for Incoming Bean.......
+	public boolean supports(Class<?> clazz) {
+		
+//		it will support only for BuildDTO this Bean --if it returns "True" Thenonly it will excute the Validate Method Else Not..
+		return BuildDTO.class.equals(clazz);
+	}
+
+//	this will excute if Supports Returns "True" ---
+	public void validate(Object target, Errors errors) {
+		
+//		Validating to not allow the Empty os null
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "username.Empty", "Name Should not be Empty");
+		
+//		Validating to not allow "_" which contains "_" 
+		BuildDTO username=(BuildDTO)target;
+		 if(!username.getName().contains("_")) {
+			 errors.rejectValue("name", "username.Invalide", "username must contains '_' ");
+		 }
+		
+		
+		
+	}
+	
+
+}

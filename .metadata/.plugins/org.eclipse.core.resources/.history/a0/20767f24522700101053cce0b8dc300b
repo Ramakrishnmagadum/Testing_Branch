@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 align="center" >Session attributes Examples</h2>
+<hr><br>
+First Name : ${firstname} <br>
+Second Name : ${secondname}<br>
+
+Fetching Firstname from  requestScope : ${requestscope.firstname}<br>
+Fetching Firstname from  Session Scope : ${sessionscope.firstname}
+<br>
+<a href="second"> next</a>
+</body>
+</html>

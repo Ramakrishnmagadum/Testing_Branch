@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%><!-- This is Form Tag Lib  -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<body>
+	<center>
+		<h1>Welcome To Bill Pay Page</h1>
+	</center>
+	<hr>
+	<form:form align="center" modelAttribute="details" action="resultpage">
+	<div>
+	<form:errors path="cardnumber"> </form:errors>
+	<form:errors path="amount"> </form:errors>
+	</div>
+		<table>
+			<tr>
+				<td><form:label path="cardnumber">Card Number :</form:label></td>
+				<td><form:input path="cardnumber" /><br> <br></td>
+			</tr>
+			<tr>
+				<td><form:label path="amount">Amount:</form:label></td>
+				<td><form:input path="amount" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Pay Bill"></td>
+				<td></td>
+			</tr>
+		</table>
+	</form:form>
+</body>
+</html>

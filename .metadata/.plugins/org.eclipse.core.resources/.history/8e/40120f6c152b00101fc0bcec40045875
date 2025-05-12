@@ -1,0 +1,18 @@
+package com.Exception.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class FirstController {
+
+	
+	@RequestMapping("/")
+	public String getHomepage() {
+		if(true) {
+			throw new NullPointerException();
+		}
+		
+		return "Home-Page";
+	}
+}

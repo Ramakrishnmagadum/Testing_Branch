@@ -1,0 +1,33 @@
+package com.ModelAttribute.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ModelAttribute.DTO.MYwebsiteIntoDTO;
+
+@Controller
+public class MywebsiteController {
+	
+	@ModelAttribute("websiteinfo")
+	public MYwebsiteIntoDTO getwebisteInfo() {
+		System.out.println(("@ModelAttribute :-> Inside getwebisteInfo Method "));
+		MYwebsiteIntoDTO dto =new MYwebsiteIntoDTO();
+		dto.setWebsiteName("SeleniumExpress");
+		dto.setWebsiteCategory("Education ");
+		return dto;
+	}
+	
+	@RequestMapping("/showinfo")
+	public String showWebsiteInfo() {
+		System.out.println("Inside showWebsiteInfo Method");
+		return "Home-Page";
+	}
+	
+	@RequestMapping("/showCompanyinfo")
+	public String showCompanyInfo() {
+		System.out.println("Inside showCompanyInfo Method");
+		return "Home-Page";
+	}
+
+}

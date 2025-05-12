@@ -1,0 +1,11 @@
+<html>
+<body>
+<h2 align="center" >Session attributes Examples</h2>
+First Name :${firstname}
+Second Name : ${secondname}
+
+Fetching Firstname from  requestScope : ${requestscope.firstname}
+Fetching Firstname from  Session Scope : ${sessionscope.firstname}
+<hr><br>
+</body>
+</html>

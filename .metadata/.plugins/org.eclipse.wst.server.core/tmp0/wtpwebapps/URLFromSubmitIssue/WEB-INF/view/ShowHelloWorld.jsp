@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Show Hello World Page</title>
+</head>
+<body>
+<!-- here will concatinate This url with Root Context (Poject Name) -->
+<!-- /ProcessHelloWorld  here this url is leading with slash this will remove all the path only "http://localhost:8080" with this URL /ProcessHelloWorld this url will concatinate  -->
+<!-- Example :- http://localhost:8080/ProcessHelloWorld  But here Context also needed here will add that tooo By Hardcoded ..-->
+<%-- ${pageContext.request.contextPath}    this will concatinate the root Context to URL --%>
+<form action="${pageContext.request.contextPath}/ProcessHelloWorld">
+
+<h2>Hello World</h2>
+<label for="name">Name : </label>
+<input id="name" type="text" placeholder="Enter Name"><br><br>
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

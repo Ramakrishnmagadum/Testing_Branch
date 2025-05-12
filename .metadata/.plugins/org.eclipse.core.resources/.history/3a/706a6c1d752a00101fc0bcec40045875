@@ -1,0 +1,19 @@
+package com.ModelAttribute.Controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class MywebsiteController {
+	
+	@RequestMapping("/showinfo")
+	public String showWebsiteInfo() {
+		return "Home-Page";
+	}
+	
+	@RequestMapping("/showCompanyinfo")
+	public String showCompanyInfo() {
+		return "Home-Page";
+	}
+
+}

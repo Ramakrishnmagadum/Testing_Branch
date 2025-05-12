@@ -1,0 +1,21 @@
+package com.practice.Customvalidator;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+//this will validate particuler Field ...
+public class UsernameValidator  implements Validator{
+
+//	
+	public boolean supports(Class<?> clazz) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void validate(Object target, Errors errors) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

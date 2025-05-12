@@ -1,0 +1,42 @@
+package com.feedback.Service;
+
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FeedbackEmailSenderImpl  implements FeedbackEmailSender{
+
+	
+	@Autowired
+	JavaMailSenderImpl mailsender ;
+	
+	public void sendEmail(String Username, String Email, String Feedback) {
+		try {
+//			Sending mail From user to Company
+		SimpleMailMessage message=new SimpleMailMessage();
+//		Comapany Email is Hardcoded...
+		message.setTo("ramakrishnamagadum.k@auracloud.com");
+        message.setSubject("Feedback from User");
+        message.setText("Feedback From "+ Username+ " FeedBack : "+Feedback);
+        mailsender.send(message);
+        
+
+//		Sending mail From Company To User
+        SimpleMailMessage messagerev=new SimpleMailMessage();
+        messagerev.setFrom("ramakrishnamagadum.k@auracloud.com");
+        messagerev.setTo(Email);
+        messagerev.setSubject("Feedback from User");
+        messagerev.setText("Feedback From "+ Username+ " FeedBack : "+Feedback);
+        mailsender.send(messagerev);
+        
+        
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+}

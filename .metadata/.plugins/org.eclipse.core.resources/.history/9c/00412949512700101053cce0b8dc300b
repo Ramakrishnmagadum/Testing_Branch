@@ -1,0 +1,13 @@
+<html>
+<body>
+<h2 align="center" >Session attributes Examples</h2>
+First Name :${firstname} <br>
+Second Name : ${secondname}<br>
+
+Fetching Firstname from  requestScope : ${requestscope.firstname}<br>
+Fetching Firstname from  Session Scope : ${sessionscope.firstname}
+
+<input type="submit" value="Submit">
+<hr><br>
+</body>
+</html>

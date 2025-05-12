@@ -1,0 +1,66 @@
+package com.lovecalculator_config;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration.Dynamic;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSourceResolvable;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.core.ResolvableType;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.Resource;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.lovecalculator.Formatter.PhoneFormatter;
+
+//after commenting implementation this class does not have any super power now , while starting server this will not excute 
+//uncomment the implemenation this will get super power again....
+//this implementation is commenting because...in this class more code need to write to avoid that we are writing on more classs "AnnotationWebInitilizer.java"
+public class WebxmlIntilizer  implements WebApplicationInitializer 
+{
+	
+
+
+	public void onStartup(ServletContext servletContext) throws ServletException {
+
+//This is for XML file----
+//this will create webApplicationContext object and it will get controller/Handler Mapping xml file and register those controller in WebApllication Context
+		//XmlWebApplicationContext webapplicationconext = new XmlWebApplicationContext();
+// this will set location that xmlfile..
+		//webapplicationconext.setConfigLocation("classpath:Controller_Mapping.xml");
+		
+		
+//This is By using Annotation --we can configure the Controller/Handler Mappings
+		AnnotationConfigWebApplicationContext webapplicationconext =new AnnotationConfigWebApplicationContext();
+		webapplicationconext.register(ControllerMapper.class);
+
+// in Dispatcher Servlet --pasing webApplicationContext object with xml file path
+		DispatcherServlet dispatcherServlet = new DispatcherServlet(webapplicationconext);
+
+// in servletContext --we will set/Register dispatcherServlet
+		Dynamic mycustomedispatcher = servletContext.addServlet("myinitilizerdispatcherservlet", dispatcherServlet);
+// this is url mapping
+		mycustomedispatcher.addMapping("/");
+// this is load on startup..
+		mycustomedispatcher.setLoadOnStartup(1);
+
+	}
+
+}

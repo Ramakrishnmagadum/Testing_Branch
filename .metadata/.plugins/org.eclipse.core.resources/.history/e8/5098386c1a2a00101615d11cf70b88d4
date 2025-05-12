@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Result Page</title>
+</head>
+<body>
+
+<h1 align="center">Love Calculator</h1>
+<hr>
+<div align="center">
+<h3>The Love calculator Predicts: </h3>
+<!-- this by @RequestParam  -->
+<%-- <p>${uname} and ${cname} you both are: </p> --%>
+
+<!--  passing StudentBean Object Ref -->
+<h3>${student.username} and ${student.crushname} are: ${message} </h3>
+
+<!-- /MVC_Love_Calculator/sendemail/{student.username}  here we are passing the dynamic Url , this we can handle by @PathVarible-->
+<a href="/MVC_Love_Calculator/sendemail"> Send result to email</a><br>
+<a href=""> Try With Somebody Else</a><br>
+<a href=""> Check user histroy</a>
+</div>
+
+</body>
+</html>

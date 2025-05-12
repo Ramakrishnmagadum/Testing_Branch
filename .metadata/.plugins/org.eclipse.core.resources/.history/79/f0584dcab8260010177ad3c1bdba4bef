@@ -1,0 +1,8 @@
+package CookieSessionManagement;
+
+public class StudentBean {
+	private String username;
+	private String crushname;
+	private int age;
+
+}

@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%><!-- This is Form Tag Lib  -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Processed Page</title>
+</head>
+<body>
+
+<form:form action="/sendEmail" modelAttribute="userinfo">
+Hello ${userinfo.username} 
+Your Feedback Sent Succcesfully  ...
+</form:form>
+</body>
+</html>

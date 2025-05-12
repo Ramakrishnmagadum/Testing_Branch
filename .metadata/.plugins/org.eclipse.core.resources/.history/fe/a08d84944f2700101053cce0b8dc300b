@@ -1,0 +1,23 @@
+package com.practice.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+
+
+@Controller
+@SessionAttributes("object1")
+public class FirstController {
+	@RequestMapping("/frist")
+	public String handlingmethod1(Model model) {
+		model.addAttribute("object1", )
+		return "index";
+		}
+	
+	@RequestMapping("/second")
+	public String handlingmethod2() {
+		return "index";
+		}
+}

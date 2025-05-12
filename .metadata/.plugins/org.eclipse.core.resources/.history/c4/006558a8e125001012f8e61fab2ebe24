@@ -1,0 +1,17 @@
+package com.practice.Converter;
+
+import org.springframework.core.convert.converter.Converter;
+
+import com.practice.Entities.CreditCard;
+
+
+//Converter<String, CreditCard>   --> here inside this we will pass two parameters
+//two parameter will say like --> Converting String --to -- CreditCard
+public class CreditCardConverter implements Converter<String, CreditCard> {
+
+	public CreditCard convert(String source) {
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,3 @@
+Email.Empty = Email should not be Null 
+Email.Empty.details.email = Email should not be Null 
+Email.invalide = Email should  ends with @Ego.com

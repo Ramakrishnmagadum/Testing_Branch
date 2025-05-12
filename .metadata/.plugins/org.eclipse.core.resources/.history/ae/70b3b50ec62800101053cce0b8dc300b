@@ -1,0 +1,21 @@
+package sessionAttributesexample2;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+@Controller
+//this username -->will be avalaible to session level ....
+@SessionAttributes("username")
+public class FristController {
+	
+	@RequestMapping("first2")
+	public String getmethod1(Model model) {
+		model.addAttribute("username" ,"Ramakrishna");
+		model.addAttribute("surname" ,"Magadum");
+		return "secondExample";
+		
+	}
+
+}

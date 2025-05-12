@@ -1,0 +1,5 @@
+package com.feedback.Service;
+
+public class FeedbackEmailSenderImpl  implements FeedbackEmailSender{
+
+}
