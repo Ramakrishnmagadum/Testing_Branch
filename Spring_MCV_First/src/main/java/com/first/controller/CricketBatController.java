@@ -10,6 +10,10 @@ public class CricketBatController {
 	@ResponseBody
 	@RequestMapping("/bat")
 	public String getbat() {
+                String name;
+                if(name =="ram")
 		return "take here is your bat";
 	}
+
+    
 }
