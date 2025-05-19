@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CricketBatController {
+
+public void GetError(){
+return "error";
+}
+
 	//@ResponseBody By this  we can return String as response..
 	@ResponseBody
 	@RequestMapping("/bat")
